@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>create</title>
+        <style type="text/css">
+            .form{
+                float:left;
+                margin:20px 180px 10px 10px;
+            }
+            #color{
+                margin:160px 38px;
+            }
+            #red{
+                margin:30px 100px;
+                background-color:red;
+            }
+            #green{
+                margin:30px 100px;
+                background-color:green;
+
+            }
+        </style>
+    </head>
+    <body>
+        <form id="creator">
+            <div class="form">
+                <p>name</p>
+                <input class="item" type="text"/>
+                <p>age</p>
+                <input class="item" type="text"></input>
+            </div>
+            <div class="form">
+                <p>maths</p>
+                <input class="item" type="value"/>
+                <p>science</p>
+                <input class="item" type="value"/>
+            </div>
+            <div>
+                <input type="submit" value="submit"></input>
+            </div>
+            <div id="color">
+                <button id="red">red</button>
+                <button id="green">green</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>data</th>
+                    </tr>
+                </thead>
+                <tbody id="items">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tbody>
+            </table>
+        </form>
+        <script>
+            var btn1=document.getElementById('red');
+            var btn2=document.getElementById('green');
+
+            function random(number){
+                return Math.floor(Math.random()*number);
+            }
+            function randomColor(){
+                return 'rgb('+random(255)+','+random(255)+','+random(255)+')';
+            }
+            function setColor(){
+                var color=randomColor;
+                document.getElementById('red').style.color=color;
+                document.getElementById('green').style.color=color;
+            }
+            btn1.addEventListener('click',setColor)
+            btn2.addEventListener('click',setColor)
+
+            var creatorForm=document.getElementById("creator");
+            var itemsParent=document.getElementById("items");
+
+            function submitForm(event){
+                var item=document.getElementByClass('.item').value;
+                createItem(item);
+                event.preventDefault();
+            }
+            function createItem(item){
+                var row1=document.createElement('tr');
+                var row2=document.createElement('tr');
+                var row3=document.createElement('tr');
+                var row4=document.createElement('tr');
+                var col=document.createElement('td');
+                col.textContent = item;
+                btn.addEventListener('click', markComplete);
+                row1.appendChild(col);
+                row2.appendChild(col);
+                row3.appendChild(col);
+                row4.appendChild(col);
+                itemsParent.appendChild(col);
+            }
+            function markComplete(event){
+                var item=event.target;
+                item.textContent="completed"
+                item.style.color="black"
+            }
+
+            creatorForm.addEventListener('submit', submitForm);
+
+        </script>
+    </body>
+</html>
